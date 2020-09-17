@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 import Btn from './Btn';
 import '../styles/DisplayTask.css';
+import { deleteToDo } from '../redux/crudAction';
 
-const DisplayTask = ({ toDos }) => {
+const ToDoTask = ({ toDos, deleteToDo }) => {
   const [toDoList, setToDoList] = useState([]);
   useEffect(() => {
     setToDoList(toDos);
@@ -16,7 +17,13 @@ const DisplayTask = ({ toDos }) => {
           <div className='col-1 sr_task'>{index + 1}.</div>{' '}
           <div className='col-7 sr_task'>{toDo}</div>
           <Btn className='col-2' btnColor='success' text='Update' />
-          <Btn className='col-2' btnColor='danger' text='Delete' />
+          <Btn
+            className='col-2'
+            btnColor='danger'
+            text='Delete'
+            action={deleteToDo}
+            toDo={toDo}
+          />
           <hr className='w-100' />
         </div>
       ))}
@@ -30,4 +37,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(DisplayTask);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteToDo: (toDo) => dispatch(deleteToDo(toDo)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoTask);

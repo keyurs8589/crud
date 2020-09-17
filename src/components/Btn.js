@@ -1,9 +1,12 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const Btn = ({ btnColor, text }) => {
+const Btn = ({ btnColor, text, action, toDo }) => {
+  const actionOnToDoTask = () => {
+    action(toDo);
+  };
   return (
-    <Button className='mr-2' variant={btnColor}>
+    <Button onClick={actionOnToDoTask} className='mr-2' variant={btnColor}>
       {text}
     </Button>
   );
