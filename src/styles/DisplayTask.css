@@ -1,0 +1,9 @@
+.display_task {
+  margin: auto;
+}
+
+.sr_task {
+  align-self: center;
+  margin-right: 8px;
+  font-weight: 500;
+}
