@@ -7,6 +7,13 @@ export const createToDo = (toDo) => {
   };
 };
 
+export const updateToDo = (updatedToDo, toDo) => {
+  return {
+    type: UPDATE_TODO,
+    payload: { updatedToDo: updatedToDo, toDo: toDo },
+  };
+};
+
 export const deleteToDo = (toDo) => {
   return {
     type: DELETE_TODO,
